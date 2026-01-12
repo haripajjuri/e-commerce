@@ -23,15 +23,15 @@ model Users{
 }
 
 
-
 model Products{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   description String
-  Price Int
+  price Int
+  section String
   category String
-  image String
-  stock Int
+  image String[]
+  quantity Int
   createdAt DateTime @default(now())
 }
 
