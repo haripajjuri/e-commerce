@@ -17,7 +17,6 @@ export async function GET(req: Request){
         });        
 
         return NextResponse.json({
-            ok :true,
             products,
             pagination:{
                 page,
@@ -30,6 +29,6 @@ export async function GET(req: Request){
         })
     }catch(err){
         const error = (err as Error).message
-        return NextResponse.json({ok:false, error}, {status:500})
+        return NextResponse.json({message:error}, {status:500})
     }
 }
