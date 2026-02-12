@@ -5,7 +5,7 @@ export async function POST(req: Request) {
     const form = await req.formData();
     const exits = await prisma.users.findUnique({where:{email:form.get("email") as string }});
     if(exits){
-        return NextResponse.json({ ok:false, error: "user already exists" }, { status: 409 });
+        return NextResponse.json({ message: "user already exists" }, { status: 409 });
     }
     try{
         await prisma.users.create({
@@ -15,10 +15,10 @@ export async function POST(req: Request) {
             password: form.get("password") as string
         }
         })
-        return NextResponse.json({ok:true, message:"User created sucesfully"}, { status:201});
+        return NextResponse.json({message:"User created sucesfully"}, { status:201});
 
     }catch(err){
-        return NextResponse.json({ok:false, message:"cannot register user"}, {status:500});
+        return NextResponse.json({message:"cannot register user"}, {status:500});
 
     }    
 }

@@ -7,7 +7,7 @@ export async function POST(req:Request){
     const body = await req.json();
     try{
         if(!session){
-            return NextResponse.json({ok:false, guest_cart:true, error:"unauthorized"},{status:401})
+            return NextResponse.json({guest_cart:true, message:"unauthorized"},{status:401})
         }
         const item = await prisma.cart.update({
             where:{
@@ -22,9 +22,9 @@ export async function POST(req:Request){
                 }
             }
         })
-        return NextResponse.json({ok:true, item})
+        return NextResponse.json({item})
     }catch(err){
         const error = (err as Error).message;
-        return NextResponse.json({ok:false, error},{status:500})
+        return NextResponse.json({message: error},{status:500})
     }
 }

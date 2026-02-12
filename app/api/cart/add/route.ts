@@ -9,7 +9,7 @@ export async function POST(req:Request){
     try{
 
         if(!session){
-            return NextResponse.json({ok:false, guest_cart:true, error:"unauthorized"},{status:401})
+            return NextResponse.json({guest_cart:true, message:"unauthorized"},{status:401})
         }
 
         const item = await prisma.cart.upsert({
@@ -31,10 +31,10 @@ export async function POST(req:Request){
                 price:body.price
             }
         })
-        return NextResponse.json({ok:true, item})
+        return NextResponse.json({item})
 
     }catch(err){
         const error = (err as Error).message;
-        return NextResponse.json({ok:false, error},{status:500})
+        return NextResponse.json({message: error},{status:500})
     }
 }
