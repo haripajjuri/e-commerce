@@ -19,12 +19,13 @@ export default async function Product({params} : props){
     const {product} = await res.json()
     
     return(
-        <div className="h-svh flex">
+        <div className="h-full flex">
 
             <div className="border flex-1">image section</div>
 
             <div className="border flex-1">
-
+                <h1>{product.name}</h1>
+                {product.description}
             </div>
         </div>
     )
