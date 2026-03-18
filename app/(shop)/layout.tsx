@@ -1,7 +1,7 @@
 // app/(main)/layout.tsx
 // Adjust path to your component
 
-import Header from "@/componenets/header";
+import Header from "@/components/header";
 
 export default function MainLayout({
   children,
@@ -13,7 +13,7 @@ export default function MainLayout({
 
         <Header />
         
-        <main className="flex-1 flex">
+        <main className="flex-1">
             {children}
         </main>
 
